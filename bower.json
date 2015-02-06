@@ -1,0 +1,14 @@
+{
+  "name": "numeric-directive",
+  "version": "0.9.1",
+  "main": "numeric-directive.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "devDependencies": {
+    "angular": "~1.3.8",
+    "angular-mocks": "~1.3.8"
+  }
+}
