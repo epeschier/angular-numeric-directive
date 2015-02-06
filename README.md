@@ -1,6 +1,6 @@
 # angular-numeric-directive
 
-[![Build Status](https://travis-ci.org/epeschier/angular-numeric-directive.svg)](http://travis-ci.org/epeschier/angular-numeric-directive)
+[![Build Status](https://travis-ci.org/epeschier/angular-numeric-directive.svg?branch=master)](http://travis-ci.org/epeschier/angular-numeric-directive)
 
 This angular directive prevents the user from entering non-numeric values.
 
