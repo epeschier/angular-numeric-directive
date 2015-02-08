@@ -55,13 +55,11 @@ describe('angular-numeric-directive', function () {
     it('accepts in-range values', function () {
       setValue('50.4');
       expect(scope.model.number).toEqual(50.4);
-      expect(form.number.$valid).toBe(true);
-    });
+   });
 
     it('accepts decimals without a leading zero', function () {
       setValue('.5');
       expect(scope.model.number).toEqual(0.5);
-      expect(form.number.$valid).toBe(true);
     });
 
     it('rounds off to two decimal points', function () {
@@ -69,18 +67,10 @@ describe('angular-numeric-directive', function () {
       expect(scope.model.number).toEqual(42);
     });
 
-    // it('disallows negative values', function () {
-    //   setValue('-5');
-    //   expect(scope.model.number).to.not.be.ok;
-    //   expect(inputEl.val()).toEqual('');
-    //   expect(form.number.$valid).toBe(true);
-    // });
-
-    // it('strips out invalid chars', function () {
-    //   setValue('a');
-    //   expect(scope.model.number).to.not.be.ok;
-    //   expect(inputEl.val()).toEqual('');
-    // });
+    it('disallows negative values', function () {
+      setValue('-5');
+      expect(inputEl.val()).toEqual('');
+    });
 
     it('reverts to the last valid value on invalid char', function () {
       // A valid value is first entered
@@ -91,7 +81,6 @@ describe('angular-numeric-directive', function () {
 
       expect(scope.model.number).toEqual(50.4);
       expect(inputEl.val()).toEqual('50.4');
-      expect(form.number.$valid).toBe(true);
     });
 
     it('formats decimals on blur', function () {
@@ -107,22 +96,24 @@ describe('angular-numeric-directive', function () {
     });
   });
 
-  // describe('when min < 0', function () {
-  //   beforeEach(function () {
-  //     setupDirective('min="-10"');
-  //   });
+  describe('when min < 0', function () {
+    beforeEach(function () {
+      setupDirective('min="-10"');
+    });
 
-  //   it('allows the negative sign', function () {
-  //     setValue('-');
-  //     expect(scope.model.number).to.not.be.ok;
-  //     expect(form.number.$valid).toBe(true);
-  //   });
-  //   it('allows negative values', function () {
-  //     setValue('-5.4');
-  //     expect(scope.model.number).toEqual(-5.4);
-  //     expect(form.number.$valid).toBe(true);
-  //   });
-  // });
+    it('allows negative values', function () {
+      setValue('-5.41');
+      expect(scope.model.number).toEqual(-5.41);
+      //expect(inputEl.val()).toEqual('-5.40');
+    });
+
+    it('takes the min value', function () {
+      setValue('-20');
+      inputEl.triggerHandler('blur');
+      expect(inputEl.val()).toEqual('-10.00');
+      expect(scope.model.number).toEqual(-10);
+    });
+  });
 
   describe('when value < min', function () {
     it('takes the min value', function () {
