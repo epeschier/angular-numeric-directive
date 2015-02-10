@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "istanbul cover test/*.js",
+    "test": "istanbul test test/numeric.conf.js"
   },
   "repository": {
     "type": "git",
