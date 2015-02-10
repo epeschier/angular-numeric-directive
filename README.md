@@ -1,6 +1,7 @@
 # angular-numeric-directive
 
 [![NPM](https://nodei.co/npm/angular-numeric-directive.png)](https://nodei.co/npm/angular-numeric-directive/)
+
 [![Build Status](https://travis-ci.org/epeschier/angular-numeric-directive.svg?branch=master)](http://travis-ci.org/epeschier/angular-numeric-directive)
 [![Code Climate](https://codeclimate.com/github/epeschier/angular-numeric-directive/badges/gpa.svg)](https://codeclimate.com/github/epeschier/angular-numeric-directive)
 [![Test Coverage](https://codeclimate.com/github/epeschier/angular-numeric-directive/badges/coverage.svg)](https://codeclimate.com/github/epeschier/angular-numeric-directive)
