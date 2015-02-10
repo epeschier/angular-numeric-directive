@@ -9,7 +9,5 @@ before_script:
   - bower install
   - npm install -g istanbul
   - npm install -g codeclimate-test-reporter
-script:
-  - npm test
 after_script:
   - cat test/coverage/lcov.info | codeclimate
