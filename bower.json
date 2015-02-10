@@ -1,5 +1,5 @@
 {
-  "name": "numeric-directive",
+  "name": "angular-numeric-directive",
   "version": "0.9.3",
   "main": "numeric-directive.js",
   "ignore": [
