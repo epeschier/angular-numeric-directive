@@ -1,6 +1,6 @@
 ﻿/**
  * Numeric directive.
- * Version: 0.9.3
+ * Version: 0.9.4
  * 
  * Numeric only input. Limits input to:
  * - max value: maximum input value. Default undefined (no max)
@@ -11,6 +11,7 @@
 (function () {
     'use strict';
 
+    /* global angular */
     angular
         .module('purplefox.numeric', [])
         .directive('numeric', numeric);
@@ -31,8 +32,8 @@
 
 
         function link(scope, el, attrs, ngModelCtrl) {
-            var decimalSeparator = $locale.NUMBER_FORMATS['DECIMAL_SEP'];
-            var groupSeparator = $locale.NUMBER_FORMATS['GROUP_SEP'];
+            var decimalSeparator = $locale.NUMBER_FORMATS.DECIMAL_SEP;
+            var groupSeparator = $locale.NUMBER_FORMATS.GROUP_SEP;
 
             // Create new regular expression with current decimal separator.
             var NUMBER_REGEXP = "^\\s*(\\-|\\+)?(\\d+|(\\d*(\\.\\d*)))\\s*$";
@@ -40,7 +41,7 @@
 
             var formatting = true;
             var maxInputLength = 16;            // Maximum input length. Default max ECMA script.
-            var max = undefined;                // Maximum value. Default undefined.
+            var max;                            // Maximum value. Default undefined.
             var min = 0;                        // Minimum value. Default 0.
             var decimals = 2;                   // Number of decimals. Default 2.
             var lastValidValue;                 // Last valid value.
@@ -77,7 +78,7 @@
                     ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                     ngModelCtrl.$render();
                 }
-            };
+            }
 
             function onMaxChanged(value) {
                 if (!angular.isUndefined(value)) {
@@ -87,7 +88,7 @@
                     ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                     ngModelCtrl.$render();
                 }
-            };
+            }
 
             function onDecimalsChanged(value) {
                 if (!angular.isUndefined(value)) {
@@ -96,13 +97,13 @@
                     ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                     ngModelCtrl.$render();
                 }
-            };
+            }
 
             function onFormattingChanged(value) {
                 formatting = !(value === false);
                 ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                 ngModelCtrl.$render();
-            };
+            }
 
             /**
              * Round the value to the closest decimal.
@@ -200,8 +201,8 @@
              */
             function calculateMaxLength(value) {
                 var length = 16;
-                if (!angular.isUndefined(max)) {
-                    length = max.toString().length;
+                if (!angular.isUndefined(value)) {
+                    length = value.toString().length;
                 }
                 if (decimals > 0) {
                     // Add extra length for the decimals and the decimal separator.
@@ -228,7 +229,7 @@
                 else {
                     return value;
                 }
-            };
+            }
 
             /**
              * Maximum value validator.
@@ -257,7 +258,7 @@
                     ngModelCtrl.$viewValue = formatPrecision(value);
                     ngModelCtrl.$render();
                 }
-            };
+            }
 
             
             /**
@@ -270,7 +271,7 @@
                     ngModelCtrl.$viewValue = value.toString().replace(".", decimalSeparator);
                     ngModelCtrl.$render();
                 }
-            };
+            }
         }
     }
 

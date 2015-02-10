@@ -1,6 +1,6 @@
 {
   "name": "angular-numeric-directive",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Angular numeric directive",
   "main": "src/angular-numeric-directive.js",
   "dependencies": {

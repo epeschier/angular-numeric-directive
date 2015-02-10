@@ -1,6 +1,6 @@
 {
   "name": "angular-numeric-directive",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "main": "numeric-directive.js",
   "ignore": [
     "**/.*",
