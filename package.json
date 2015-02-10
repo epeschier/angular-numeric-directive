@@ -1,0 +1,27 @@
+{
+  "name": "angular-numeric-directive",
+  "version": "0.9.3",
+  "description": "Angular numeric directive",
+  "main": "src/angular-numeric-directive.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "istanbul cover test/*.js",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epeschier/angular-numeric-directive"
+  },
+  "keywords": [
+    "angular",
+    "numeric"
+  ],
+  "author": "Erik Peschier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epeschier/angular-numeric-directive/issues"
+  },
+  "homepage": "https://github.com/epeschier/angular-numeric-directive"
+}
