@@ -1,7 +1,14 @@
 {
+  "author": "Erik Peschier",
   "name": "angular-numeric-directive",
+  "description": "Angular numeric directive",
   "version": "0.9.4",
-  "main": "numeric-directive.js",
+  "homepage": "http://github.com/angular-numeric-directive/angular-numeric-directive",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/angular-numeric-directive/angular-numeric-directive"
+  },
+  "main": "./src/numeric-directive.js",
   "ignore": [
     "**/.*",
     "node_modules",
