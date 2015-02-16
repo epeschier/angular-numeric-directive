@@ -6,7 +6,7 @@ addons:
     repo_token: f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
 
 before_install:
-  - npm install -qg grunt-cli karma-cli istanbul codeclimate-test-reporter
+  - npm install -qg grunt-cli karma-cli karma-phantomjs istanbul codeclimate-test-reporter
 
 before_script:
   - export DISPLAY=:99.0

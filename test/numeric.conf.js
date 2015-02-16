@@ -22,9 +22,9 @@ module.exports = function(config) {
     ],
 
     plugins:[
-             'karma-jasmine',
-             'karma-coverage',
-             'karma-phantomjs-launcher',
+     'karma-jasmine',
+     'karma-coverage',
+     'karma-phantomjs-launcher',
     ],
 
     // list of files to exclude
