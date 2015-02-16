@@ -4,13 +4,13 @@ node_js:
 addons:
   code_climate:
     repo_token: f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
+
+before_install:
+  - npm install -qg grunt-cli karma-cli codeclimate-test-reporter
+
 before_script:
-  - npm install -g bower
-  - bower install
-  - npm install -g karma
-  - npm install -g istanbul
-  - npm install -g codeclimate-test-reporter
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+  
 after_script:
   - cat test/coverage/lcov.info | codeclimate
