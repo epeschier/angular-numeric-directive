@@ -2,7 +2,7 @@
   "author": "Erik Peschier",
   "name": "angular-numeric-directive",
   "description": "Angular numeric directive",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "homepage": "http://github.com/angular-numeric-directive/angular-numeric-directive",
   "repository": {
     "type": "git",
