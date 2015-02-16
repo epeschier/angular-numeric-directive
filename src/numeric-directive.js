@@ -1,6 +1,6 @@
 ﻿/**
  * Numeric directive.
- * Version: 0.9.4
+ * Version: 0.9.5
  * 
  * Numeric only input. Limits input to:
  * - max value: maximum input value. Default undefined (no max)
@@ -202,10 +202,10 @@
             function calculateMaxLength(value) {
                 var length = 16;
                 if (!angular.isUndefined(value)) {
-                    length = value.toString().length;
+                    length = Math.floor(value).toString().length;
                 }
                 if (decimals > 0) {
-                    // Add extra length for the decimals and the decimal separator.
+                    // Add extra length for the decimals plus one for the decimal separator.
                     length += decimals + 1; 
                 }
                 if (min < 0) {
