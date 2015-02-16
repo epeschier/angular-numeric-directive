@@ -7,6 +7,7 @@ addons:
 before_script:
   - npm install -g bower
   - bower install
+  - npm install -g karma
   - npm install -g istanbul
   - npm install -g codeclimate-test-reporter
   - export DISPLAY=:99.0
