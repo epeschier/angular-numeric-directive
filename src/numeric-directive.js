@@ -1,10 +1,10 @@
 ﻿/**
  * Numeric directive.
- * Version: 0.9.5
+ * Version: 0.9.6
  * 
  * Numeric only input. Limits input to:
- * - max value: maximum input value. Default undefined (no max)
- * - min value: minimum input value. Default 0.
+ * - max value: maximum input value. Default undefined (no max).
+ * - min value: minimum input value. Default undefined (no min).
  * - decimals: number of decimals. Default 2.
  * - formatting: apply thousand separator formatting. Default true.
  */
@@ -42,7 +42,7 @@
             var formatting = true;
             var maxInputLength = 16;            // Maximum input length. Default max ECMA script.
             var max;                            // Maximum value. Default undefined.
-            var min = 0;                        // Minimum value. Default 0.
+            var min;                            // Minimum value. Default undefined.
             var decimals = 2;                   // Number of decimals. Default 2.
             var lastValidValue;                 // Last valid value.
 
