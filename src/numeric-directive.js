@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Numeric directive.
  * Version: 0.9.6
  * 
