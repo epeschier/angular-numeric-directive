@@ -100,7 +100,7 @@
             }
 
             function onFormattingChanged(value) {
-                formatting = !(value === false);
+                formatting = (value !== false);
                 ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                 ngModelCtrl.$render();
             }
@@ -132,7 +132,9 @@
              * Format a value with thousand group separator and correct decimal char.
              */
             function formatPrecision(value) {
-                if (!(value || value === 0)) return '';
+                if (!(value || value === 0)) {
+                    return '';
+                }
                 var formattedValue = parseFloat(value).toFixed(decimals);
                 formattedValue = formattedValue.replace('.', decimalSeparator);
                 return numberWithCommas(formattedValue);
