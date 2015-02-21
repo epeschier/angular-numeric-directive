@@ -30,7 +30,7 @@
     "numeric"
   ],
   "author": "Erik Peschier",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/epeschier/angular-numeric-directive/issues"
   },
