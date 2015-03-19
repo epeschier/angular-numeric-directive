@@ -1,6 +1,6 @@
 /**
  * Numeric directive.
- * Version: 0.9.6
+ * Version: 0.9.8
  * 
  * Numeric only input. Limits input to:
  * - max value: maximum input value. Default undefined (no max).
@@ -55,7 +55,7 @@
             el.bind('blur', onBlur);        // Event handler for the leave event.
             el.bind('focus', onFocus);      // Event handler for the focus event.
 
-            /* Put a watch on the min, max and decimal value changes in the attribute. */
+            // Put a watch on the min, max and decimal value changes in the attribute.
             scope.$watch(attrs.min, onMinChanged);
             scope.$watch(attrs.max, onMaxChanged);
             scope.$watch(attrs.decimals, onDecimalsChanged);
@@ -94,15 +94,19 @@
                 if (!angular.isUndefined(value)) {
                     decimals = parseFloat(value);
                     maxInputLength = calculateMaxLength(max);
-                    ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
-                    ngModelCtrl.$render();
+                    if (lastValidValue !== undefined) {
+                        ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
+                        ngModelCtrl.$render();
+                    }
                 }
             }
 
             function onFormattingChanged(value) {
-                formatting = (value !== false);
-                ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
-                ngModelCtrl.$render();
+                if (!angular.isUndefined(value)) {
+                    formatting = (value !== false);
+                    ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
+                    ngModelCtrl.$render();
+                }
             }
 
             /**
@@ -151,8 +155,7 @@
                 if (angular.isUndefined(value)) {
                     value = '';
                 }
-                value = value.toString();
-                value = value.replace(decimalSeparator, '.');
+                value = value.toString().replace(decimalSeparator, '.');
 
                 // Handle leading decimal point, like ".5"
                 if (value.indexOf('.') === 0) {
@@ -174,14 +177,14 @@
                 var empty = ngModelCtrl.$isEmpty(value);
                 if (empty) {
                     lastValidValue = '';
-                    ngModelCtrl.$modelValue = undefined;
+                    //ngModelCtrl.$modelValue = undefined;
                 } 
                 else {
                     if (regex.test(value) && (value.length <= maxInputLength)) {
-                        if (lastValidValue > max) {
+                        if (value > max) {
                             lastValidValue = max;
                         }
-                        else if (lastValidValue < min) {
+                        else if (value < min) {
                             lastValidValue = min;
                         }
                         else {
