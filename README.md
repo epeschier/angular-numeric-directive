@@ -13,6 +13,11 @@ This angular directive prevents the user from entering non-numeric values.
 - Formatting is done on the blur event; thousand separator and decimal are based on the current Angular locale.
 - The number of decimals can be set.
 
+## Install:
+bower install angular-numeric-directive --save
+
+npm install angular-numeric-directive --save
+
 ## Usage:
 
 1. Include the numeric-directive as a dependency for your app.
