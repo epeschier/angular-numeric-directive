@@ -9,7 +9,7 @@
 
 This angular directive prevents the user from entering non-numeric values.
 
-- There are checks on min and max values. When the value falls below the minumum the value is set to the minumum value. When the value exceeds the maxiumum, the value is set to the maximum.
+- There are checks on min and max values. When the value falls below the minumum the value is set to the minumum value. When the value exceeds the maxiumum, the value is set to the maximum. If the limit-min or limit-max attributes are set to false, the min or max values remain untouched.
 - Formatting is done on the blur event; thousand separator and decimal are based on the current Angular locale.
 - The number of decimals can be set.
 
@@ -41,3 +41,7 @@ npm install angular-numeric-directive --save
 **`decimals`**: number of decimals. Default 2.
 
 **`formatting`**: apply thousand separator formatting. Default true.
+
+**`limit-max`**: limit input to max value (value is capped). Default true. If set to false, the angular validations can be done like normal.
+
+**`limit-min`**: limit input to min value (value is capped). Default true. If set to false, the angular validations can be done like normal.

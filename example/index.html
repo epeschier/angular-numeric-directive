@@ -20,10 +20,11 @@
       </p>
     </div>
 
-    <div>
-      <input numeric ng-model="vm.value" min="10" max="40" decimals="3" />
+    <form name="myForm">
+      <input name="myNumber" numeric ng-model="vm.value" min="10" max="40" decimals="3" limit-min="false" />
       <p>Model value: {{vm.value}}</p>
+      <p>Error model: {{myForm.myNumber.$error}}</p>
       <p>Tab out of input to see the changes.</p>
-    </div>
+    </form>
   </body>
 </html>
