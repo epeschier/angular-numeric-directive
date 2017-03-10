@@ -1,6 +1,6 @@
 /**
  * Numeric directive.
- * Version: 0.9.8
+ * Version: 1.0.0
  * 
  * Numeric only input. Limits input to:
  * - max value: maximum input value. Default undefined (no max).
