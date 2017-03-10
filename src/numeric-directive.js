@@ -43,6 +43,8 @@
             var maxInputLength = 16;            // Maximum input length. Default max ECMA script.
             var max;                            // Maximum value. Default undefined.
             var min;                            // Minimum value. Default undefined.
+            var limitMax = true;                // Limit input to max value (value is capped). Default true.
+            var limitMin = true;                // Limit input to min value (value is capped). Default true.
             var decimals = 2;                   // Number of decimals. Default 2.
             var lastValidValue;                 // Last valid value.
 
@@ -58,6 +60,8 @@
             // Put a watch on the min, max and decimal value changes in the attribute.
             scope.$watch(attrs.min, onMinChanged);
             scope.$watch(attrs.max, onMaxChanged);
+            scope.$watch(attrs.limitMax, onLimitMaxChanged);
+            scope.$watch(attrs.limitMin, onLimitMinChanged);
             scope.$watch(attrs.decimals, onDecimalsChanged);
             scope.$watch(attrs.formatting, onFormattingChanged);
 
@@ -106,6 +110,18 @@
                     formatting = (value !== false);
                     ngModelCtrl.$setViewValue(formatPrecision(lastValidValue));
                     ngModelCtrl.$render();
+                }
+            }
+
+            function onLimitMinChanged(value) {
+                if (!angular.isUndefined(value)) {
+                    limitMin = (value == "true");
+                }
+            }
+
+            function onLimitMaxChanged(value) {
+                if (!angular.isUndefined(value)) {
+                    limitMax = (value == "true");
                 }
             }
 
@@ -181,10 +197,10 @@
                 } 
                 else {
                     if (regex.test(value) && (value.length <= maxInputLength)) {
-                        if (value > max) {
+                        if ((value > max) && limitMax) {
                             lastValidValue = max;
                         }
-                        else if (value < min) {
+                        else if ((value < min) && limitMin) {
                             lastValidValue = min;
                         }
                         else {
@@ -225,7 +241,7 @@
              * Minimum value validator.
              */
             function minValidator(value) {
-                if (!angular.isUndefined(min)) {
+                if (!angular.isUndefined(min) && limitMin) {
                     if (!ngModelCtrl.$isEmpty(value) && (value < min)) {
                         return min;
                     } else {
@@ -233,6 +249,9 @@
                     }
                 }
                 else {
+                    if (!limitMin) {
+                        ngModelCtrl.$setValidity('min', !(value < min));
+                    }
                     return value;
                 }
             }
@@ -241,7 +260,7 @@
              * Maximum value validator.
              */
             function maxValidator(value) {
-                if (!angular.isUndefined(max)) {
+                if (!angular.isUndefined(max) && limitMax) {
                     if (!ngModelCtrl.$isEmpty(value) && (value > max)) {
                         return max;
                     } else {
@@ -249,6 +268,9 @@
                     }
                 }
                 else {
+                    if (!limitMax) {
+                        ngModelCtrl.$setValidity('max', !(value > max));
+                    }
                     return value;
                 }
             }
