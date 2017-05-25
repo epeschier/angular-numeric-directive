@@ -2,7 +2,7 @@
   "name": "angular-numeric-directive",
   "version": "1.0.0",
   "description": "Angular numeric directive",
-  "main": "src/angular-numeric-directive.js",
+  "main": "src/numeric-directive.js",
   "dependencies": {
     "angular": "~1.3.0"
   },
