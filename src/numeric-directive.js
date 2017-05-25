@@ -10,6 +10,9 @@
  */
 (function () {
     'use strict';
+    if(module) {
+        module.exports = 'purplefox.numeric';
+    }
 
     /* global angular */
     angular
