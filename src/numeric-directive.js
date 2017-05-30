@@ -10,6 +10,9 @@
  */
 (function () {
     'use strict';
+    if(module) {
+        module.exports = 'purplefox.numeric';
+    }
 
     /* global angular */
     angular
@@ -138,7 +141,7 @@
              */
             function numberWithCommas(value) {
                 if (formatting) {
-                    var parts = value.toString().split(decimalSeparator);
+                    var parts = (""+value).split(decimalSeparator);
                     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, groupSeparator);
                     return parts.join(decimalSeparator);
                 }
@@ -171,7 +174,7 @@
                 if (angular.isUndefined(value)) {
                     value = '';
                 }
-                value = value.toString().replace(decimalSeparator, '.');
+                value = (""+value).replace(decimalSeparator, '.');
 
                 // Handle leading decimal point, like ".5"
                 if (value.indexOf('.') === 0) {
@@ -296,7 +299,7 @@
             function onFocus() {
                 var value = ngModelCtrl.$modelValue;
                 if (!angular.isUndefined(value)) {
-                    ngModelCtrl.$viewValue = value.toString().replace(".", decimalSeparator);
+                    ngModelCtrl.$viewValue = (""+value).replace(".", decimalSeparator);
                     ngModelCtrl.$render();
                 }
             }
