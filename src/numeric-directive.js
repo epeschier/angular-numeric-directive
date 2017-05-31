@@ -10,7 +10,7 @@
  */
 (function () {
     'use strict';
-    if(module) {
+    if(typeof module !== 'undefined') {
         module.exports = 'purplefox.numeric';
     }
 
