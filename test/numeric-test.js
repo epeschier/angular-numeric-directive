@@ -174,6 +174,7 @@ describe('angular-numeric-directive', function () {
 
   describe('when value has no min', function () {
     it('takes the value', function () {
+      setupDirective();
       setValue('-10');
       inputEl.triggerHandler('blur');
       expect(inputEl.val()).toEqual('-10.00');
