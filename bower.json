@@ -2,7 +2,7 @@
   "author": "Erik Peschier",
   "name": "angular-numeric-directive",
   "description": "Angular numeric directive",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://github.com/epeschier/angular-numeric-directive",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "components"
   ],
   "devDependencies": {
-    "angular": "~1.3.8",
-    "angular-mocks": "~1.3.8"
+    "angular": "~1.6.9",
+    "angular-mocks": "~1.6.9"
   }
 }
