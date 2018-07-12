@@ -74,7 +74,7 @@
                     return (value) ? round(value) : value;
                 });
                 ngModelCtrl.$formatters.push(function (value) {
-                    return (value) ? formatPrecision(value) : value;
+                    return (value || value === 0) ? formatPrecision(value) : value;
                 });
             }
 
