@@ -10,8 +10,5 @@ env:
 before_script:
   - npm install -qg grunt-cli karma-cli istanbul codeclimate-test-reporter
 
-script:
-  - npm test
-
 after_script:
   - codeclimate < test/coverage/**/lcov.info
