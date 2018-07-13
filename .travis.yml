@@ -4,10 +4,22 @@ node_js:
   - "node"
 
 env:
-  - CODECLIMATE_REPO_TOKEN=f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
+  global:
+    CC_TEST_REPORTER_ID=f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
 
-before_script:
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - export DISPLAY=:99.0                # Display number for xvfb (for headless browser testing)
+  - sh -e /etc/init.d/xvfb start        # Start xvfb (for headless browser testing)
+  - ./cc-test-reporter before-build
+
+install:
+  - npm install                         # Install npm dependencies
   - npm install -qg grunt-cli karma-cli istanbul codeclimate-test-reporter
 
+script:
+  - npm test
+
 after_script:
-  - codeclimate < test/coverage/**/lcov.info
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
