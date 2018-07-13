@@ -1,16 +1,17 @@
 language: node_js
+
 node_js:
   - "node"
-addons:
-  code_climate:
-    repo_token: f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
 
-before_install:
-  - npm install -qg grunt-cli karma-cli istanbul codeclimate-test-reporter
+env:
+  env:
+  - CODECLIMATE_REPO_TOKEN=f6086c3920602d6e039ca0a214e2b9696059a68ef8272c68f57c33dd8466940d
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - npm install -qg grunt-cli karma-cli istanbul codeclimate-test-reporter
+
+script:
+  - npm test
 
 after_script:
-  - cat test/coverage/lcov.info | codeclimate
+  - codeclimate < test/coverage/**/lcov.info
