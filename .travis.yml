@@ -22,4 +22,5 @@ script:
   - npm test
 
 after_script:
-  - ./cc-test-reporter after-build -t lcov test/coverage/lcov.info
+  - run: ./cc-test-reporter format-coverage -t lcov test/coverage/lcov.info
+  - run: ./cc-test-reporter upload-coverage
