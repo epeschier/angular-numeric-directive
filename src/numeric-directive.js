@@ -1,13 +1,3 @@
-/**
- * Numeric directive.
- * Version: 1.0.0
- * 
- * Numeric only input. Limits input to:
- * - max value: maximum input value. Default undefined (no max).
- * - min value: minimum input value. Default undefined (no min).
- * - decimals: number of decimals. Default 2.
- * - formatting: apply thousand separator formatting. Default true.
- */
 (function () {
     'use strict';
     if(typeof module !== 'undefined') {
@@ -241,43 +231,37 @@
             }
 
             /**
-             * Minimum value validator.
+             * Value validator for min and max.
              */
-            function minValidator(value) {
-                if (!angular.isUndefined(min) && limitMin) {
-                    if (!ngModelCtrl.$isEmpty(value) && (value < min)) {
-                        return min;
+            function minmaxValidator(value, testValue, validityName, limit, compareFunction) {
+                if (!angular.isUndefined(testValue) && limit) {
+                    if (!ngModelCtrl.$isEmpty(value) && compareFunction) {
+                        return testValue;
                     } else {
                         return value;
                     }
                 }
                 else {
-                    if (!limitMin) {
-                        ngModelCtrl.$setValidity('min', !(value < min));
+                    if (!limit) {
+                        ngModelCtrl.$setValidity(validityName, !compareFunction);
                     }
                     return value;
                 }
             }
 
             /**
+             * Minimum value validator.
+             */
+            function minValidator(value) {
+                return minmaxValidator(value, min, 'min', limitMin, (value < min));
+            }
+
+            /**
              * Maximum value validator.
              */
             function maxValidator(value) {
-                if (!angular.isUndefined(max) && limitMax) {
-                    if (!ngModelCtrl.$isEmpty(value) && (value > max)) {
-                        return max;
-                    } else {
-                        return value;
-                    }
-                }
-                else {
-                    if (!limitMax) {
-                        ngModelCtrl.$setValidity('max', !(value > max));
-                    }
-                    return value;
-                }
+                return minmaxValidator(value, max, 'max', limitMax, (value > max));
             }
-
 
             /**
              * Function for handeling the blur (leave) event on the control.
@@ -290,7 +274,6 @@
                     ngModelCtrl.$render();
                 }
             }
-
             
             /**
              * Function for handeling the focus (enter) event on the control.
